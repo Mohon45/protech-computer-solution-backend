@@ -34,6 +34,17 @@ const serviceSchema = new Schema(
       type: Number,
       required: [true, "maxPrice is required"],
     },
+    reviews: [
+      {
+        comments: String,
+        rating: {
+          type: Number,
+          min: 0,
+          max: 5,
+        },
+        userName: String,
+      },
+    ],
   },
   { timestamps: true }
 );

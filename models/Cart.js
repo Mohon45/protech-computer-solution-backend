@@ -15,6 +15,10 @@ const cartSchema = new Schema(
         location: String,
         category: String,
         date: String,
+        serviceId: {
+          type: ObjectId,
+          ref: "service",
+        },
       },
     ],
   },

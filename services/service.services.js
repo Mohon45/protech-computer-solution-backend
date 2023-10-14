@@ -26,3 +26,12 @@ exports.deleteservice = async (serviceId) => {
   const result = await Service.deleteOne({ _id: serviceId });
   return result;
 };
+
+exports.userReviewService = async (serviceId, data) => {
+  const result = await Service.findOneAndUpdate(
+    { _id: serviceId },
+    { $push: { reviews: data } },
+    { new: true }
+  );
+  return result;
+};

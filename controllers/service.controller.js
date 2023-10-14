@@ -4,6 +4,7 @@ const {
   getSingleService,
   updateServie,
   deleteservice,
+  userReviewService,
 } = require("../services/service.services");
 const { httpResponse } = require("../utils/httpResponse");
 
@@ -66,5 +67,17 @@ module.exports.deleteService = async (req, res) => {
       .json(httpResponse("success", result, "Service deleted success"));
   } catch (error) {
     res.status(500).json(httpResponse("fail", {}, "Service deleted failed"));
+  }
+};
+
+module.exports.userReview = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await userReviewService(id, req.body);
+    res
+      .status(200)
+      .json(httpResponse("success", result, "Review Submit success"));
+  } catch (error) {
+    res.status(500).json(httpResponse("fail", {}, "Review Submit failed"));
   }
 };

@@ -10,7 +10,7 @@ exports.updateSingleItemInCartService = async (id, data) => {
   const isCurtExist = await Cart.findOne({ userId: id });
   if (isCurtExist) {
     const result = await Cart.findOneAndUpdate(
-      { userId: id },
+      { userId: id, "cartItem.serviceId": { $ne: data.serviceId } },
       { $push: { cartItem: data } },
       { new: true }
     );

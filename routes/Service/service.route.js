@@ -14,6 +14,7 @@ router.post(
 router.get("/", serviceController.getAllServices);
 router.get("/details/:id", serviceController.getSingleService);
 router.patch("/update/:id", serviceController.updateService);
+router.patch("/review/:id", serviceController.userReview);
 router.delete("/delete/:id", serviceController.deleteService);
 
 module.exports = router;

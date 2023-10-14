@@ -19,9 +19,15 @@ module.exports.getUserAllCart = async (req, res) => {
 module.exports.updateSingleCart = async (req, res) => {
   try {
     const result = await updateSingleItemInCartService(req.user.id, req.body);
-    res
-      .status(200)
-      .json(httpResponse("success", result, "A new Item cart add success"));
+    if (result === null) {
+      res
+        .status(400)
+        .json(httpResponse("fail", {}, "This Item already exists in cart"));
+    } else {
+      res
+        .status(200)
+        .json(httpResponse("success", result, "A new Item cart add success"));
+    }
   } catch (error) {
     res
       .status(500)
