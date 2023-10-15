@@ -11,7 +11,7 @@ const serviceSchema = new Schema(
     category: {
       type: String,
       required: [true, "category is required"],
-      enum: ["repair", "software", "dataRecovary", "automation"],
+      enum: ["repair", "software", "data_recovary", "automation", "others"],
     },
 
     image: {

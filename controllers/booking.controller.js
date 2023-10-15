@@ -2,6 +2,7 @@ const {
   createBookingService,
   getUserBookingsService,
   userUpdateBookingService,
+  adminUpdateBookingService,
 } = require("../services/booking.services");
 const { httpResponse } = require("../utils/httpResponse");
 
@@ -32,6 +33,18 @@ module.exports.userUpdateBooking = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await userUpdateBookingService(id);
+    res
+      .status(200)
+      .json(httpResponse("success", result, "Booking Update success"));
+  } catch (error) {
+    res.status(500).json(httpResponse("fail", {}, "Booking update failed"));
+  }
+};
+
+module.exports.adminUpdateBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await adminUpdateBookingService(id, req.body);
     res
       .status(200)
       .json(httpResponse("success", result, "Booking Update success"));

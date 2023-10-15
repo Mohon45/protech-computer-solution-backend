@@ -5,10 +5,13 @@ const createServiceZodSchema = z.object({
     title: z.string({
       required_error: "title is required",
     }),
-    category: z.enum(["repair", "software", "dataRecovery", "automation"], {
-      required_error:
-        "Category is required and must be one of: repair, software, dataRecovery, automation",
-    }),
+    category: z.enum(
+      ["repair", "software", "data_recovary", "automation", "others"],
+      {
+        required_error:
+          "Category is required and must be one of: repair, software, dataRecovery, automation",
+      }
+    ),
     image: z.string({
       required_error: "image is required",
     }),

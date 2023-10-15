@@ -12,5 +12,10 @@ router.patch(
   auth.verifyToken,
   bookingController.userUpdateBooking
 );
+router.patch(
+  "/admin-update/:id",
+  auth.verifyToken,
+  bookingController.adminUpdateBooking
+);
 
 module.exports = router;

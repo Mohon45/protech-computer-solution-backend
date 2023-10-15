@@ -26,6 +26,10 @@ const bookingSchema = new Schema(
       enum: ["pending", "complete", "approved", "rejected", "cancled"],
       default: "pending",
     },
+    validPhoneNumber: {
+      type: String,
+      required: [true, "booking Phone Number is required"],
+    },
   },
   { timestamps: true }
 );

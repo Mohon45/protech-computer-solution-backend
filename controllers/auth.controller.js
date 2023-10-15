@@ -72,7 +72,6 @@ module.exports.login = async (req, res) => {
         );
 
         res.cookie("tokenExp", "1", {
-          httpOnly: true,
           sameSite: "strict",
           secure: true,
           path: "/",
