@@ -5,18 +5,15 @@ const date = moment(new Date().toISOString()).format("YYYY-MM-DD");
 
 const faqSchema = new Schema(
   {
-    title: {
+    question: {
       type: String,
-      required: [true, "Blog Title is required"],
+      required: [true, "FAQ question is required"],
     },
-    image: {
+    answar: {
       type: String,
-      required: [true, "Image Title is required"],
+      required: [true, "FAQ answar is required"],
     },
-    description: {
-      type: String,
-      required: [true, "Blog Description is required"],
-    },
+
     publishedDate: {
       type: String,
       default: date,

@@ -4,7 +4,7 @@ const {
   getSingleBlogService,
   deleteBlogService,
   updateBlogService,
-} = require("../services/blog.service");
+} = require("../services/blog.services");
 const { httpResponse } = require("../utils/httpResponse");
 
 module.exports.createBlog = async (req, res) => {
