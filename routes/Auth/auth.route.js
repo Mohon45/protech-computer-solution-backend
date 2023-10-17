@@ -23,10 +23,12 @@ router.get(
   auth.verifyToken,
   authController.getLoggedInUser
 );
+router.get("/all-user", auth.verifyToken, authController.getAllUsers);
 router.patch(
   "/profile-update/:id",
   auth.verifyToken,
   authController.updateProfile
 );
+router.delete("/delete/:id", auth.verifyToken, authController.deleteUser);
 
 module.exports = router;

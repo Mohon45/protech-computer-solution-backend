@@ -23,14 +23,6 @@ module.exports.signup = async (req, res) => {
     } else {
       const newUser = await User.create(userData);
 
-      // Create JWT
-      const token = createToken(
-        { id: newUser._id },
-        process.env.ACCESS_TOKEN_SECRET
-      );
-
-      res.cookie("token", token, { httpOnly: true, maxAge: maxAge * 1000 });
-
       res
         .status(201)
         .json(httpResponse("sucess", newUser, "User Registered successfully"));
@@ -186,5 +178,26 @@ module.exports.updateProfile = async (req, res) => {
     res.status(200).json(httpResponse("success", result, "User found"));
   } catch (error) {
     res.status(500).json(httpResponse("fail", {}, "Profile Update Failed"));
+  }
+};
+
+module.exports.getAllUsers = async (req, res) => {
+  try {
+    const result = await User.find({ role: "user" });
+    res.status(200).json(httpResponse("success", result, "User found"));
+  } catch (error) {
+    res.status(500).json(httpResponse("fail", {}, "data retrival Failed"));
+  }
+};
+
+module.exports.deleteUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await User.deleteOne({ _id: id });
+    res
+      .status(200)
+      .json(httpResponse("success", result, "User deleted successfully"));
+  } catch (error) {
+    res.status(500).json(httpResponse("fail", {}, "User deleted Failed"));
   }
 };
