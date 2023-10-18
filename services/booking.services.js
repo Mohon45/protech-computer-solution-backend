@@ -19,6 +19,16 @@ exports.getUserBookingsService = async (id) => {
   return result;
 };
 
+exports.getAllBookingsService = async (id) => {
+  const result = await Booking.find({})
+    .populate({
+      path: "user",
+      select: "-password",
+    })
+    .populate("service");
+  return result;
+};
+
 exports.userUpdateBookingService = async (id) => {
   const result = await Booking.updateOne({ _id: id }, { status: "cancled" });
   return result;
@@ -26,5 +36,9 @@ exports.userUpdateBookingService = async (id) => {
 
 exports.adminUpdateBookingService = async (id, data) => {
   const result = await Booking.updateOne({ _id: id }, data);
+  return result;
+};
+exports.deleteBookingService = async (id) => {
+  const result = await Booking.deleteOne({ _id: id });
   return result;
 };

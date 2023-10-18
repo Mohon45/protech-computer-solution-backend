@@ -14,7 +14,10 @@ exports.getAllBlogsService = async () => {
 
 exports.getSingleBlogService = async (id) => {
   const result = await Blog.findOne({ _id: id });
-
+  if (result) {
+    result.views += 1;
+    result.save();
+  }
   return result;
 };
 

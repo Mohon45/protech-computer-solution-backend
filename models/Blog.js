@@ -21,6 +21,10 @@ const blogSchema = new Schema(
       type: String,
       default: date,
     },
+    views: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );

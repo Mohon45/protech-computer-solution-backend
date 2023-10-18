@@ -3,6 +3,8 @@ const {
   getUserBookingsService,
   userUpdateBookingService,
   adminUpdateBookingService,
+  getAllBookingsService,
+  deleteBookingService,
 } = require("../services/booking.services");
 const { httpResponse } = require("../utils/httpResponse");
 
@@ -28,6 +30,18 @@ module.exports.getUserBooking = async (req, res) => {
       .json(httpResponse("fail", {}, "User Booking Retrival failed"));
   }
 };
+module.exports.getAllBookings = async (req, res) => {
+  try {
+    const result = await getAllBookingsService();
+    res
+      .status(200)
+      .json(httpResponse("success", result, " Booking data Retrival success"));
+  } catch (error) {
+    res
+      .status(500)
+      .json(httpResponse("fail", {}, " Booking data Retrival failed"));
+  }
+};
 
 module.exports.userUpdateBooking = async (req, res) => {
   try {
@@ -50,5 +64,17 @@ module.exports.adminUpdateBooking = async (req, res) => {
       .json(httpResponse("success", result, "Booking Update success"));
   } catch (error) {
     res.status(500).json(httpResponse("fail", {}, "Booking update failed"));
+  }
+};
+
+module.exports.deleteBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await deleteBookingService(id);
+    res
+      .status(200)
+      .json(httpResponse("success", result, "Booking Deleted success"));
+  } catch (error) {
+    res.status(500).json(httpResponse("fail", {}, "Booking Deleted failed"));
   }
 };
