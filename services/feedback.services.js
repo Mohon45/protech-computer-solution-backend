@@ -12,3 +12,8 @@ exports.getAllFeedBackService = async () => {
   });
   return result;
 };
+
+exports.deleteFeedbackService = async (id) => {
+  const result = await FeedBack.deleteOne({ _id: id });
+  return result;
+};

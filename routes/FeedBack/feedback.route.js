@@ -7,5 +7,10 @@ const validateRequest = require("../../middleware/validateRequest");
 
 router.post("/create", auth.verifyToken, feedbackController.createFeedBack);
 router.get("/", auth.verifyToken, feedbackController.getAllFeedBack);
+router.delete(
+  "/delete/:id",
+  auth.verifyToken,
+  feedbackController.deleteFeedback
+);
 
 module.exports = router;
