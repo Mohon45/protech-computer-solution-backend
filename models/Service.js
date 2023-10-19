@@ -34,6 +34,7 @@ const serviceSchema = new Schema(
       type: Number,
       required: [true, "maxPrice is required"],
     },
+    userBooking: [{ type: mongoose.SchemaTypes.ObjectId, ref: "user" }],
     reviews: [
       {
         comments: String,

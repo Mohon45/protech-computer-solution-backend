@@ -12,9 +12,10 @@ router.post(
   serviceController.createService
 );
 router.get("/", serviceController.getAllServices);
+router.get("/reviews", serviceController.getAllReviews);
 router.get("/details/:id", serviceController.getSingleService);
-router.patch("/update/:id", serviceController.updateService);
-router.patch("/review/:id", serviceController.userReview);
-router.delete("/delete/:id", serviceController.deleteService);
+router.patch("/update/:id", auth.verifyToken, serviceController.updateService);
+router.patch("/review/:id", auth.verifyToken, serviceController.userReview);
+router.delete("/delete/:id", auth.verifyToken, serviceController.deleteService);
 
 module.exports = router;

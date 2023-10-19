@@ -35,3 +35,15 @@ exports.userReviewService = async (serviceId, data) => {
   );
   return result;
 };
+
+exports.getAllReviews = async () => {
+  const result = await Service.aggregate([
+    {
+      $unwind: "$reviews",
+    },
+    {
+      $replaceRoot: { newRoot: "$reviews" },
+    },
+  ]);
+  return result;
+};
