@@ -4,6 +4,8 @@
 
 ## API BASE URL : https://pro-tech-computer.vercel.app
 
+## Vide URL : https://drive.google.com/file/d/1nObXZLoHL6xa9x3OfTreQ3CbynP4Th4X/view?usp=sharing
+
 ## Credentials
 
 1. Super Admin:
