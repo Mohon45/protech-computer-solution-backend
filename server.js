@@ -24,7 +24,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:5000"],
+    origin: [
+      "http://localhost:3000",
+      "https://pro-tech-computer-solution-k0dhxx3l3-mohon45.vercel.app",
+      "http://localhost:5000",
+      "https://pro-tech-computer.vercel.app",
+    ],
     optionsSuccessStatus: 200,
     credentials: true,
   })
